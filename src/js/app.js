@@ -3,8 +3,8 @@
  * @author kelvshi
  */
 define('app', function(require, exports, module) {
-	// 扩展base对象作为全局app
 	var app = {};
+	var Menu = require("widget/menu");
 	var MainView = Backbone.View.extend({
 		el:document.body,
 		events:{
@@ -13,8 +13,8 @@ define('app', function(require, exports, module) {
 			},
 		},
 		initialize:function(options, param){
-			// this.model = new myModel();
-			// console.log(this.model.get("id"));
+			var menu = new Menu();
+			// djda
 		}
 	});
 	app.mainView = new MainView();

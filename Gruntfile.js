@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 				ext: '.css'
 			}
 		},
-		concat: {//css文件合并
+		concat: {//文件合并
 		    css: {
 		      	src: ['vendors/normalize.css/normalize.css', 'vendors/iconfont/iconfont.css', 'src/css/*.css'],
 		      	dest: 'dist/css/style.css'
@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 		      	dest: 'dist/js/lib.js'
 		    },
 		    app: {
-		    	src: ['src/js/app.js'],
+		    	src: ['src/js/data/files.js','src/js/widget/menu.js','src/js/app.js'],
 		      	dest: 'dist/js/app.js'
 		    },
 		    js: {
@@ -58,13 +58,13 @@ module.exports = function(grunt) {
 					debounceDelay: 100
 				}
 			},
-			concat_js: {
-				files: 'src/js/**/!(app).js',
-				tasks: 'concat:js',
-				options: {
-					debounceDelay: 100
-				}
-			}
+			// concat_js: {
+			// 	files: 'src/js/**/!(app).js',
+			// 	tasks: 'concat:js',
+			// 	options: {
+			// 		debounceDelay: 100
+			// 	}
+			// }
 		}
 	});
 
