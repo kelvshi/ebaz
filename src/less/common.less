@@ -1,0 +1,114 @@
+/*========几个主色调========*/
+@g_blue: rgb(66, 133, 244);
+@g_red: rgb(234, 67, 53);
+@g_orange: rgb(251, 188, 5);
+@g_green: rgb(52, 168, 83);
+.g_blue_fn(@attr, @opacity){
+	@{attr}: rgba(66, 133, 244, @opacity);
+}
+.g_red_fn(@attr, @opacity){
+	@{attr}: rgba(234, 67, 53, @opacity);
+}
+.g_orange_fn(@attr, @opacity){
+	@{attr}: rgba(251, 188, 5, @opacity);
+}
+.g_green_fn(@attr, @opacity){
+	@{attr}: rgba(52, 168, 83, @opacity);
+}
+.g_white_fn(@attr, @opacity){
+	@{attr}: rgba(255, 255, 255, @opacity);
+}
+.g_black_fn(@attr, @opacity){
+	@{attr}: rgba(0, 0, 0, @opacity);
+}
+/*=======其他======*/
+@bg_gray:#f2f2f2; //淡灰色背景
+@bd_gray:#e7e7e7; //淡灰色边框
+
+/*==========公用样式=========*/
+.shadow{
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/**
+ * less common function
+ * @author: wyicwx@gmail.com
+ * @github: https://github.com/wyicwx
+ */
+.ctx_width() {
+    width: 960px;
+    margin: auto;
+}
+.display_inline_block() {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+/* 去除inline-block的间隙 */
+.tx_ns {
+    font-size: 0;
+  -webkit-text-size-adjust:none; /* 解决 webkit 内核限制最小字体大小问题 */
+}
+.ie6_png_bg(@img) {
+    _background-image: none;
+    _filter: ~'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="@{img}",sizingMethod="crop");'
+}
+.min_height(@height) {
+    min-height: ~'@{height}px';
+    _height: ~'@{height}px';
+}
+.max_height(@height) {
+    max-height: ~'@{height}px';
+    _height: ~'expression(this.width > @{height} ? "@{height}px" : "auto")';
+}
+.min_width(@width) {
+    min-width: ~'@{width}px';
+    _width:~'expression((document.documentElement.clientWidth||document.body.clientWidth)> @{width} ? "@{width}px":"auto")';
+}
+.opacity(@alpha) {
+    opacity: @alpha;
+    @iealpha: @alpha*100;
+    filter:alpha(opacity=@iealpha);  
+}
+// css3 prefix
+.pre(@style, @value){
+    -webkit-@{style}: @value;
+       -moz-@{style}: @value;
+        -ms-@{style}: @value;
+            @{style}: @value;
+}
+.border_radius(@radius) {
+    .pre(border-radius, @radius);
+}
+.box_shadow(@value) {
+    .pre(box-shadow, @value);
+}
+.box_sizing(@value) {
+    .pre(box-sizing, @value);
+}
+.transition(@arg){
+    .pre(transition,@arg);
+}
+.transform(@arg) {
+    .pre(transform, @arg);
+}
+.text_shadow(@arg) {
+    .pre(text-shadow, @arg);
+}
+.transform_origin(@arg) {
+    .pre(transform-origin, @arg);
+}
+.text_shadow(@arg) {
+    .pre(text-shadow, @arg);
+}
+.animation(@arg) {
+    .pre(animation, @arg);
+}
+// display:box;
+.db() {
+    display: ~"-webkit-box";
+    display: box;
+}
+.db_flex(@flex) {
+    .pre(box-flex, @flex);
+}

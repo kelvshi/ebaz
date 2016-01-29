@@ -1,0 +1,109 @@
+/*========几个主色调========*/
+/*=======其他======*/
+/*==========公用样式=========*/
+.shadow {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+/**
+ * less common function
+ * @author: wyicwx@gmail.com
+ * @github: https://github.com/wyicwx
+ */
+/* 去除inline-block的间隙 */
+.tx_ns {
+  font-size: 0;
+  -webkit-text-size-adjust: none;
+  /* 解决 webkit 内核限制最小字体大小问题 */
+}
+/**
+ * widget
+ * 页面上切割的独立小块
+ */
+/*=============左侧菜单组件==============*/
+.w_menu {
+  color: #fff;
+}
+.w_menu a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 5px;
+}
+.w_menu ul {
+  box-sizing: border-box;
+}
+.w_menu ul li {
+  border-bottom: 1px solid #9AC0FF;
+  -webkit-transition: background ease 0.5s;
+  -moz-transition: background ease 0.5s;
+  -ms-transition: background ease 0.5s;
+  transition: background ease 0.5s;
+  cursor: pointer;
+}
+.w_menu ul li:hover {
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-transition: background ease 0.5s;
+  -moz-transition: background ease 0.5s;
+  -ms-transition: background ease 0.5s;
+  transition: background ease 0.5s;
+}
+.w_menu ul li.end-li {
+  border-bottom: 0;
+  border-bottom: 1px dashed #9AC0FF;
+}
+.w_menu ul > li {
+  text-align: left;
+  display: block;
+  color: #fff;
+  line-height: 28px;
+}
+.w_menu ul > li > a .icon-file-on {
+  margin-right: 5px;
+  display: none;
+}
+.w_menu ul > li > a .icon-file-off {
+  margin-right: 5px;
+  display: initial;
+}
+.w_menu ul > li > a .icon-arrowdown {
+  margin-right: 5px;
+  display: none;
+}
+.w_menu ul > li > a .icon-arrowright {
+  margin-right: 5px;
+  display: initial;
+}
+.w_menu ul > li > ul {
+  display: none;
+}
+.w_menu ul > li.active {
+  background: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  border-bottom: none;
+}
+.w_menu ul > li.active > a .icon-file-on {
+  display: initial;
+}
+.w_menu ul > li.active > a .icon-file-off {
+  display: none;
+}
+.w_menu ul > li.active > a .icon-arrowdown {
+  display: initial;
+}
+.w_menu ul > li.active > a .icon-arrowright {
+  display: none;
+}
+.w_menu ul > li.active > ul {
+  display: block;
+}
+.w_menu > ul > li > a {
+  margin-left: 5px;
+}
+.w_menu > ul > li > ul > li > a {
+  margin-left: 10px;
+}
+.w_menu > ul > li > ul > li > ul > li > a {
+  margin-left: 15px;
+}
+.w_menu > ul > li > ul > li > ul > li > ul > li > a {
+  margin-left: 20px;
+}

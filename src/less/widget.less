@@ -1,0 +1,106 @@
+@import "common.less";
+/**
+ * widget
+ * 页面上切割的独立小块
+ */
+
+/*=============左侧菜单组件==============*/
+.w_menu{
+	color: #fff;
+	a{
+		color: #fff;
+		text-decoration: none;
+		margin-left: 5px;
+	}
+	ul{
+		box-sizing: border-box;
+		li{
+			border-bottom: 1px solid #9AC0FF;
+			.transition(background ease 0.5s);
+			cursor: pointer;
+			&:hover{
+				.g_black_fn(background, .2);
+				.transition(background ease 0.5s);
+			}
+			&.end-li{
+				border-bottom: 0;
+				border-bottom: 1px dashed #9AC0FF;
+			}
+		}
+		>li{
+			text-align: left;
+			display: block;
+			color: #fff;
+			line-height: 28px;
+			>a{
+				.icon-file-on{
+					margin-right: 5px;
+					display: none;
+				}
+				.icon-file-off{
+					margin-right: 5px;
+					display: initial;
+				}
+				.icon-arrowdown{
+					margin-right: 5px;
+					display: none;
+				}
+				.icon-arrowright{
+					margin-right: 5px;
+					display: initial;
+				}
+			}
+			>ul{
+				display: none;
+			}
+			&.active{
+				.g_black_fn(background, .1);
+				color: #fff;
+				border-bottom: none;
+				>a{
+					.icon-file-on{
+						display: initial;
+					}
+					.icon-file-off{
+						display: none;
+					}
+					.icon-arrowdown{
+						display: initial;
+					}
+					.icon-arrowright{
+						display: none;
+					}
+				}
+				>ul{
+					display: block;
+				}
+			}
+		}
+	}
+	// 特意为各级菜单所定义的样式
+	.loop(1);
+	.loop(@counter) when (@counter < 5) {
+	  	>ul{
+			>li{
+				>a{
+					margin-left: 5px * @counter;
+				}
+				.loop((@counter + 1));    // 递归调用自身
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

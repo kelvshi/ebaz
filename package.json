@@ -1,0 +1,30 @@
+{
+  "name": "ebaz",
+  "version": "1.0.0",
+  "description": "explorer local pic by tree menu",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelvshi/ebaz.git"
+  },
+  "keywords": [
+    "local",
+    "picture"
+  ],
+  "author": "kelvshi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kelvshi/ebaz/issues"
+  },
+  "homepage": "https://github.com/kelvshi/ebaz#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-less": "^1.1.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-css": "^0.5.4"
+  }
+}
