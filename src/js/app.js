@@ -8,13 +8,12 @@ define('app', function(require, exports, module) {
 	var MainView = Backbone.View.extend({
 		el:document.body,
 		events:{
-			"click h1": function(e){
-				// this.model.set("id",2);
+			"click img": function(e){
+				console.log(this.menu.getActiveLi());
 			},
 		},
 		initialize:function(options, param){
-			var menu = new Menu();
-			// djda
+			this.menu = new Menu();
 		}
 	});
 	app.mainView = new MainView();

@@ -26,7 +26,7 @@
 .w_menu a {
   color: #fff;
   text-decoration: none;
-  margin-left: 5px;
+  display: block;
 }
 .w_menu ul {
   box-sizing: border-box;
@@ -50,6 +50,9 @@
   border-bottom: 0;
   border-bottom: 1px dashed #9AC0FF;
 }
+.w_menu ul li.active a.selected {
+  background: #14B5E7;
+}
 .w_menu ul > li {
   text-align: left;
   display: block;
@@ -57,7 +60,7 @@
   line-height: 28px;
 }
 .w_menu ul > li > a .icon-file-on {
-  margin-right: 5px;
+  margin-right: 8px;
   display: none;
 }
 .w_menu ul > li > a .icon-file-off {
@@ -78,6 +81,8 @@
 .w_menu ul > li.active {
   background: rgba(0, 0, 0, 0.1);
   color: #fff;
+}
+.w_menu ul > li.active:not(.end-li) {
   border-bottom: none;
 }
 .w_menu ul > li.active > a .icon-file-on {
@@ -96,14 +101,14 @@
   display: block;
 }
 .w_menu > ul > li > a {
-  margin-left: 5px;
+  padding-left: 5px;
 }
 .w_menu > ul > li > ul > li > a {
-  margin-left: 10px;
+  padding-left: 10px;
 }
 .w_menu > ul > li > ul > li > ul > li > a {
-  margin-left: 15px;
+  padding-left: 15px;
 }
 .w_menu > ul > li > ul > li > ul > li > ul > li > a {
-  margin-left: 20px;
+  padding-left: 20px;
 }

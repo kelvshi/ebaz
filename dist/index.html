@@ -10,9 +10,44 @@
     <script type="text/javascript" src="js/app.js"></script>
     <!-- 菜单模板 -->
     <script type="text/template" id="tpl_menu">
-        <h2><%= title %></h2>
+        <% function _randerChild(item){ %>
+            <% if(item.children && item.children.length > 0) { %>
+                <ul>
+                <% var list = item.children %>
+                <% _.each(list, function(value){ %>
+                    <% if(value.children && value.children.length > 0){ %>
+                    <li>
+                        <a href="#" data-files="<%= value.covers.toString() %>" data-path="<%= value.path %>">
+                            <span class="iconfont icon-file-off"></span>
+                            <span class="iconfont icon-file-on"></span><%= value.name %>
+                            <span class="iconfont icon-arrowright f_right"></span>
+                            <span class="iconfont icon-arrowdown f_right"></span>
+                        </a>
+                        <% _randerChild(value) %>
+                    </li>
+                    <% }else{ %>
+                        <li class="end-li">
+                            <a href="#" data-files="<%= value.covers.toString() %>" data-path="<%= value.path %>">
+                                <span class="iconfont icon-star-f mr5"></span><%= value.name %>
+                            </a>
+                        </li>
+                    <% } %>
+                <% }); %>
+                </ul>
+            <% } %>
+        <% } %>
+        <% _randerChild(menu) %>
     </script>
     <!-- 菜单模板 -->
+
+    <!-- 图片块模板 -->
+    <script type="text/template" id="tpl_img">
+    <div class="img-box">
+        <img src="images/test1.png">
+        <div class="img-info">这是的信息2</div>
+    </div>
+    </script>
+    <!-- 图片块模板 -->
   </head>
   <body>
     <!-- 头部 -->
@@ -42,78 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bottom" id="header">
-                <div class="w_menu">
-                    <ul class="level1">
-                        <li class="active">
-                            <a href="#">
-                                <span class="iconfont icon-file-off"></span>
-                                <span class="iconfont icon-file-on"></span>这是菜单
-                                <span class="iconfont icon-arrowright f_right"></span>
-                                <span class="iconfont icon-arrowdown f_right"></span>
-                            </a>
-                            <ul class="level2">
-                                <li>
-                                    <a href="#">
-                                        <span class="iconfont icon-file-off"></span>
-                                        <span class="iconfont icon-file-on"></span>这是菜单2
-                                        <span class="iconfont icon-arrowright f_right"></span>
-                                        <span class="iconfont icon-arrowdown f_right"></span>
-                                    </a>
-                                </li>
-                                <li class="active">
-                                    <a href="#">
-                                        <span class="iconfont icon-file-off"></span>
-                                        <span class="iconfont icon-file-on"></span>这是菜单2
-                                        <span class="iconfont icon-arrowright f_right"></span>
-                                        <span class="iconfont icon-arrowdown f_right"></span>
-                                    </a>
-                                    <ul class="level3">
-                                        <li class="end-li">
-                                            <a href="#" >
-                                                <span class="iconfont icon-star-f mr5"></span>这是菜单2
-                                            </a>
-                                        </li>
-                                        <li class="end-li">
-                                            <a href="#">
-                                                <span class="iconfont icon-star-f mr5"></span>这是菜单3
-                                            </a>
-                                        </li>
-                                        <li class="end-li">
-                                            <a href="#">
-                                                <span class="iconfont icon-star-f mr5"></span>这是菜单4
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="iconfont icon-file-off"></span>
-                                <span class="iconfont icon-file-on"></span>这是菜单2
-                                <span class="iconfont icon-arrowright f_right"></span>
-                                <span class="iconfont icon-arrowdown f_right"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="iconfont icon-file-off"></span>
-                                <span class="iconfont icon-file-on"></span>这是菜单3
-                                <span class="iconfont icon-arrowright f_right"></span>
-                                <span class="iconfont icon-arrowdown f_right"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="iconfont icon-file-off mr5"></span>
-                                <span class="iconfont icon-file-on mr5"></span>这是菜单4
-                                <span class="iconfont icon-arrowright f_right"></span>
-                                <span class="iconfont icon-arrowdown f_right"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="bottom">
             </div>
         </div>
     </div>
@@ -161,10 +125,6 @@
     <!-- 右侧总览 -->
     <!-- 右侧内容 -->
     <div class="p_right">
-        <div class="img-box">
-            <img src="images/test1.png">
-            <div class="img-info">这是的信息2</div>
-        </div>
         <div class="img-box">
             <img src="images/test2.png">
             <div class="img-info">这是图片信息2</div>
