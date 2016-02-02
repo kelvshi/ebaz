@@ -38,9 +38,22 @@ body {
 }
 .p_header .iconfont {
   font-size: 16px;
+  cursor: pointer;
+}
+.p_header .totals i.icon-filter-off {
+  display: initial;
+}
+.p_header .totals i.icon-filter-on {
+  display: none;
 }
 .p_header .totals span {
   font-size: 18px;
+}
+.p_header .totals.active i.icon-filter-off {
+  display: none;
+}
+.p_header .totals.active i.icon-filter-on {
+  display: initial;
 }
 .p_left {
   position: absolute;
@@ -128,6 +141,7 @@ body {
   overflow-y: auto;
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
+  z-index: 5;
   display: none;
 }
 .p_totals span {

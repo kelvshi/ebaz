@@ -39,19 +39,19 @@
   transition: background ease 0.5s;
   cursor: pointer;
 }
-.w_menu ul li:hover {
-  background: rgba(0, 0, 0, 0.2);
-  -webkit-transition: background ease 0.5s;
-  -moz-transition: background ease 0.5s;
-  -ms-transition: background ease 0.5s;
-  transition: background ease 0.5s;
-}
 .w_menu ul li.end-li {
   border-bottom: 0;
   border-bottom: 1px dashed #9AC0FF;
 }
 .w_menu ul li.active a.selected {
-  background: #14B5E7;
+  background: rgba(0, 0, 0, 0.2);
+}
+.w_menu ul li a:hover {
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-transition: background ease 0.5s;
+  -moz-transition: background ease 0.5s;
+  -ms-transition: background ease 0.5s;
+  transition: background ease 0.5s;
 }
 .w_menu ul > li {
   text-align: left;
@@ -79,7 +79,6 @@
   display: none;
 }
 .w_menu ul > li.active {
-  background: rgba(0, 0, 0, 0.1);
   color: #fff;
 }
 .w_menu ul > li.active:not(.end-li) {

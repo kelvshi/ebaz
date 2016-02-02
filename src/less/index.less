@@ -22,10 +22,29 @@ html,body{
 	.shadow;
 	.iconfont{
 		font-size: 16px;
+		cursor: pointer;
 	}
 	.totals{
+		i{
+			&.icon-filter-off{
+				display: initial;
+			}
+			&.icon-filter-on{
+				display: none;
+			}
+		}
 		span{
 			font-size: 18px;
+		}
+		&.active{
+			i{
+				&.icon-filter-off{
+					display: none;
+				}
+				&.icon-filter-on{
+					display: initial;
+				}
+			}
 		}
 	}
 }
@@ -111,6 +130,7 @@ html,body{
 	overflow-y: auto;
 	border-top: 1px solid @bd_gray;
 	border-bottom: 1px solid @bd_gray;
+	z-index: 5;
 	display: none;
 	span{
 		border: 1px solid @g_blue;

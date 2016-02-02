@@ -5,7 +5,7 @@
 define('widget/menu', function(require, exports, module) {
 	var menuJson = require("data/files");
 	var Menu = Backbone.View.extend({
-		// el:".w_menu",
+		className:"w_menu",
 		events:{
 			"click li": function(e){
 				var thisLi = $(e.currentTarget);
@@ -18,14 +18,18 @@ define('widget/menu', function(require, exports, module) {
 			},
 			"click li.end-li": function (e) {
 				var thisLi = $(e.currentTarget);
+				var router = thisLi.find(">a").data("path");
+				location.hash = router;
 				return false;
 			}
 		},
 
 		// 激活状态
 		beActive:function (item) {
-			item.siblings('li').removeClass('active');
-			item.addClass('active');
+			this.unActive(item.siblings('li.active'));
+			item.find(">ul").slideDown('fast', function() {
+				item.addClass('active');
+			});
 			this.$el.find('a.selected').removeClass('selected');
 			item.children('a').addClass('selected');
 		},
@@ -34,12 +38,14 @@ define('widget/menu', function(require, exports, module) {
 			if(item.hasClass('end-li')){
 				return false;
 			}
-			item.removeClass('active');
+			item.find(">ul").slideUp('fast', function() {
+				item.removeClass('active');
+			});
 		},
 
 		getActiveLi:function () {
 			var obj = {};
-			var item = this.$el.find('.end-li.active>a');
+			var item = this.$el.find('.end-li>a.selected');
 			obj.path = item.data("path");
 			obj.files = item.data("files");
 			return obj;
@@ -51,7 +57,7 @@ define('widget/menu', function(require, exports, module) {
 				menu:menuJson[0]
 			});
 			var html = this.$el.html(menuHtml);
-			this.$el.addClass('w_menu');
+			// this.$el.addClass('w_menu');
 			$(".sidemenu .bottom").html(html);
 		}
 	});

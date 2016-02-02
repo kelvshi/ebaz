@@ -192,7 +192,7 @@ define('data/files', function(require, exports, module) {
 define('widget/menu', function(require, exports, module) {
 	var menuJson = require("data/files");
 	var Menu = Backbone.View.extend({
-		// el:".w_menu",
+		className:"w_menu",
 		events:{
 			"click li": function(e){
 				var thisLi = $(e.currentTarget);
@@ -205,14 +205,18 @@ define('widget/menu', function(require, exports, module) {
 			},
 			"click li.end-li": function (e) {
 				var thisLi = $(e.currentTarget);
+				var router = thisLi.find(">a").data("path");
+				location.hash = router;
 				return false;
 			}
 		},
 
 		// 激活状态
 		beActive:function (item) {
-			item.siblings('li').removeClass('active');
-			item.addClass('active');
+			this.unActive(item.siblings('li.active'));
+			item.find(">ul").slideDown('fast', function() {
+				item.addClass('active');
+			});
 			this.$el.find('a.selected').removeClass('selected');
 			item.children('a').addClass('selected');
 		},
@@ -221,12 +225,14 @@ define('widget/menu', function(require, exports, module) {
 			if(item.hasClass('end-li')){
 				return false;
 			}
-			item.removeClass('active');
+			item.find(">ul").slideUp('fast', function() {
+				item.removeClass('active');
+			});
 		},
 
 		getActiveLi:function () {
 			var obj = {};
-			var item = this.$el.find('.end-li.active>a');
+			var item = this.$el.find('.end-li>a.selected');
 			obj.path = item.data("path");
 			obj.files = item.data("files");
 			return obj;
@@ -238,7 +244,7 @@ define('widget/menu', function(require, exports, module) {
 				menu:menuJson[0]
 			});
 			var html = this.$el.html(menuHtml);
-			this.$el.addClass('w_menu');
+			// this.$el.addClass('w_menu');
 			$(".sidemenu .bottom").html(html);
 		}
 	});
@@ -249,19 +255,82 @@ define('widget/menu', function(require, exports, module) {
  * @author kelvshi
  */
 define('app', function(require, exports, module) {
+	var undf;
 	var app = {};
 	var Menu = require("widget/menu");
 	var MainView = Backbone.View.extend({
 		el:document.body,
 		events:{
-			"click img": function(e){
-				console.log(this.menu.getActiveLi());
+			"click .p_header .totals": function(e){
+				var dom = $(e.currentTarget);
+				var totals = dom.find(".js-totals").html();
+				if(totals !== "0"){
+					var status = dom.hasClass('active');
+					if(status){
+						dom.removeClass('active');
+						this.filterOff();
+					}else{
+						dom.addClass('active');
+						this.filterOn();
+					}
+				}
 			},
 		},
+		filterOff:function () {
+			$(".p_totals").slideUp("fast",function () {
+				$(this).removeClass('active');
+			})
+		},
+		filterOn:function () {
+			$(".p_totals").slideDown("fast",function () {
+				$(this).addClass('active');
+			})
+		},
+		randerRight:function () {
+			var data = this.menu.getActiveLi();
+			var path = data.path;
+			var files = data.files.split(",");
+			var tpl = $("#tpl_img").html();
+			var html = _.template(tpl)({
+				path:path,
+				files:files
+			});
+			this.$el.find('.p_right').html(html);
+			// 当前位置
+			var position = path.replace("images/" ,"");
+			this.$el.find(".p_header .crumbs>span").html(position.replace("/"," / "));
+			// 顶部筛选
+			var spanHtml = "";
+			_.each(files, function(value){
+				spanHtml += "<span>" + value + "</span>"
+			});
+			this.$el.find('.p_totals').html($.trim(spanHtml));
+			// 总数
+			$(".p_header .totals .js-totals").html(files.length);
+		},
+		// 重置一些状态
+		resetPage:function () {
+			this.$el.find('.p_header .totals').removeClass("active");
+			this.filterOff();
+		},
+
 		initialize:function(options, param){
 			this.menu = new Menu();
 		}
 	});
+
+	var AppRouter = Backbone.Router.extend({
+		routes: {
+			"images/*param":"randerRight"
+		},
+		randerRight:function () {
+			// 重置状态
+			app.mainView.resetPage();
+			app.mainView.randerRight();
+		}
+	});
 	app.mainView = new MainView();
+	app.mainRouter = new AppRouter();
+	Backbone.history.start();
 	module.exports = app;
 })

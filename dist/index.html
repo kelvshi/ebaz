@@ -42,10 +42,12 @@
 
     <!-- 图片块模板 -->
     <script type="text/template" id="tpl_img">
+    <% _.each(files, function(value){ %>
     <div class="img-box">
-        <img src="images/test1.png">
-        <div class="img-info">这是的信息2</div>
+        <img src="<%= path + '/' + value %>">
+        <div class="img-info"><%= value %></div>
     </div>
+    <% }) %>
     </script>
     <!-- 图片块模板 -->
   </head>
@@ -58,7 +60,8 @@
         </div>
         <div class="totals f_right">
             <i class="iconfont icon-filter-off"></i>
-            <span>80</span>
+            <i class="iconfont icon-filter-on"></i>
+            <span class="js-totals">0</span>
         </div>
     </div>
     <!-- 头部 -->
@@ -83,64 +86,10 @@
     </div>
     <!-- 左侧菜单组件 -->
     <!-- 右侧总览 -->
-    <div class="p_totals">
-        <span>这是什么名字的啊</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什</span>
-        <span>这是什</span>
-        <span>这是什</span>
-        <span>这是历史</span>
-        <span>这是这是什么名字的啊历史</span>
-        <span>这是历史</span>
-        <span>这是历史</span>
-        <span>这是历史这是历史这是历史这是历史</span>
-        <span>这是历史</span>
-        <span>荷花历史</span>
-        <span>荷花历史</span>
-        <span>荷花历史</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什么名字的啊</span>
-        <span>这是这是什么名字的啊什</span>
-        <span>这是什</span>
-        <span>这是什</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什</span>
-        <span>这是什</span>
-        <span>这是什</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什么名字这是什么名字的啊的啊</span>
-        <span>这是这是什么名字的啊什</span>
-        <span>这是什</span>
-        <span>这是什</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什么名字的啊</span>
-        <span>这是什</span>
-    </div>
+    <div class="p_totals"></div>
     <!-- 右侧总览 -->
     <!-- 右侧内容 -->
     <div class="p_right">
-        <div class="img-box">
-            <img src="images/test2.png">
-            <div class="img-info">这是图片信息2</div>
-        </div>
-        <div class="img-box">
-            <img src="images/test3.png">
-            <div class="img-info">这是息2</div>
-        </div>
-        <div class="img-box">
-            <img src="images/test4.jpg">
-            <div class="img-info">这是图片对应的信息2</div>
-        </div>
-        <div class="img-box">
-            <img src="images/test5.jpg">
-            <div class="img-info">这是图片对应的信息2</div>
-        </div>
     </div>
     <!-- 右侧内容 -->
     <script type="text/javascript">
