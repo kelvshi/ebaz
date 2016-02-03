@@ -165,6 +165,7 @@ html,body{
 	top: 35px;
 	right: 0;
 	bottom: 0;
+	overflow: auto;
 	.img-box{
 		float: left;
 		border: 1px solid #e7e7e7;
@@ -173,7 +174,7 @@ html,body{
     	background: #fff;
     	.shadow;
 		img{
-			height: 220px;
+			height: 212px;
 			width: initial;
 			.transition(ease 0.3s);
 			border: 1px solid @bd_gray;
@@ -186,6 +187,10 @@ html,body{
 			padding: 2px 5px;
 		    font-size: 16px;
 		    color: #999;
+		    white-space: nowrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    box-sizing: border-box;
 		}
 	}
 }

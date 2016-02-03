@@ -296,9 +296,21 @@ define('app', function(require, exports, module) {
 				files:files
 			});
 			this.$el.find('.p_right').html(html);
+			$('img.lazy').lazyload({
+			    threshold: 100,
+			    event: "scroll",
+			    effect: "fadeIn",
+			    container: ".p_right",
+			    placeholder: "img/loading2.gif"
+			});
 			// 添加图片的效果
-			$("img.onloading").load(function() {
-				$(this).removeClass('onloading');
+			$("img").load(function() {
+				// 调整描述文字大小
+				var infor = $(this).parent("a").siblings('.img-info');
+				var imgWidth = $(this).width();
+				if(infor.width() > imgWidth){
+					infor.width(imgWidth-10);
+				}
 			});
 			// 当前位置
 			var position = path.replace("images/" ,"");

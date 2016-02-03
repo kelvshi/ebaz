@@ -44,8 +44,8 @@
     <script type="text/template" id="tpl_img">
     <% _.each(files, function(value){ %>
     <div class="img-box">
-        <a href="<%= path + '/' + value %>" title="value" data-gallery>
-            <img class="onloading" src="<%= path + '/' + value %>">
+        <a href="<%= path + '/' + value %>" title="<%= value%>" data-gallery>
+            <img class="lazy" data-src="<%= path + '/' + value %>">
         </a>
         <div class="img-info"><%= value %></div>
     </div>
