@@ -17,7 +17,7 @@ define('data/files', function(require, exports, module) {
             "covers": [],
             "children": [
                 {
-                    "id": 4,
+                    "id": 2,
                     "name": "ABC",
                     "path": "images/3D/ABC",
                     "pid": 1,
@@ -27,7 +27,7 @@ define('data/files', function(require, exports, module) {
                     ]
                 },
                 {
-                    "id": 5,
+                    "id": 3,
                     "name": "XYZ",
                     "path": "images/3D/XYZ",
                     "pid": 1,
@@ -41,67 +41,33 @@ define('data/files', function(require, exports, module) {
             ]
         },
         {
-            "id": 2,
+            "id": 4,
             "name": "JLB",
             "path": "images/JLB",
             "pid": 0,
             "covers": [],
             "children": [
                 {
-                    "id": 6,
+                    "id": 5,
                     "name": "2013",
                     "path": "images/JLB/2013",
-                    "pid": 2,
+                    "pid": 4,
                     "covers": [],
                     "children": [
                         {
-                            "id": 11,
+                            "id": 6,
                             "name": "201301",
                             "path": "images/JLB/2013/201301",
-                            "pid": 6,
+                            "pid": 5,
                             "covers": [
                                 "SSS.txt"
                             ]
                         },
                         {
-                            "id": 12,
+                            "id": 7,
                             "name": "201308",
                             "path": "images/JLB/2013/201308",
-                            "pid": 6,
-                            "covers": [
-                                "SSS - 副本 (2).txt",
-                                "SSS - 副本 (3).txt",
-                                "SSS - 副本.txt",
-                                "SSS.txt",
-                                "SSS2 - 副本 (2).txt",
-                                "SSS2 - 副本 (3).txt",
-                                "SSS2 - 副本.txt",
-                                "SSS2.txt"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": 7,
-                    "name": "2014",
-                    "path": "images/JLB/2014",
-                    "pid": 2,
-                    "covers": [],
-                    "children": [
-                        {
-                            "id": 13,
-                            "name": "201401",
-                            "path": "images/JLB/2014/201401",
-                            "pid": 7,
-                            "covers": [
-                                "SSS.txt"
-                            ]
-                        },
-                        {
-                            "id": 14,
-                            "name": "201402",
-                            "path": "images/JLB/2014/201402",
-                            "pid": 7,
+                            "pid": 5,
                             "covers": [
                                 "SSS - 副本 (2).txt",
                                 "SSS - 副本 (3).txt",
@@ -117,28 +83,62 @@ define('data/files', function(require, exports, module) {
                 },
                 {
                     "id": 8,
-                    "name": "2015",
-                    "path": "images/JLB/2015",
-                    "pid": 2,
-                    "covers": [
-                        "test1.png",
-                        "test2.png"
-                    ],
+                    "name": "2014",
+                    "path": "images/JLB/2014",
+                    "pid": 4,
+                    "covers": [],
                     "children": [
                         {
-                            "id": 15,
-                            "name": "201501",
-                            "path": "images/JLB/2015/201501",
+                            "id": 9,
+                            "name": "201401",
+                            "path": "images/JLB/2014/201401",
                             "pid": 8,
                             "covers": [
                                 "SSS.txt"
                             ]
                         },
                         {
-                            "id": 16,
+                            "id": 10,
+                            "name": "201402",
+                            "path": "images/JLB/2014/201402",
+                            "pid": 8,
+                            "covers": [
+                                "SSS - 副本 (2).txt",
+                                "SSS - 副本 (3).txt",
+                                "SSS - 副本.txt",
+                                "SSS.txt",
+                                "SSS2 - 副本 (2).txt",
+                                "SSS2 - 副本 (3).txt",
+                                "SSS2 - 副本.txt",
+                                "SSS2.txt"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 11,
+                    "name": "2015",
+                    "path": "images/JLB/2015",
+                    "pid": 4,
+                    "covers": [
+                        "test1.png",
+                        "test2.png"
+                    ],
+                    "children": [
+                        {
+                            "id": 12,
+                            "name": "201501",
+                            "path": "images/JLB/2015/201501",
+                            "pid": 11,
+                            "covers": [
+                                "SSS.txt"
+                            ]
+                        },
+                        {
+                            "id": 13,
                             "name": "201508",
                             "path": "images/JLB/2015/201508",
-                            "pid": 8,
+                            "pid": 11,
                             "covers": [
                                 "SSS - 副本 (2).txt",
                                 "SSS - 副本 (3).txt",
@@ -155,27 +155,27 @@ define('data/files', function(require, exports, module) {
             ]
         },
         {
-            "id": 3,
+            "id": 14,
             "name": "One",
             "path": "images/One",
             "pid": 0,
             "covers": [],
             "children": [
                 {
-                    "id": 9,
+                    "id": 15,
                     "name": "201301",
                     "path": "images/One/201301",
-                    "pid": 3,
+                    "pid": 14,
                     "covers": [
                         "ada.txt",
                         "adadddd.txt"
                     ]
                 },
                 {
-                    "id": 10,
+                    "id": 16,
                     "name": "201501",
                     "path": "images/One/201501",
-                    "pid": 3,
+                    "pid": 14,
                     "covers": []
                 }
             ]

@@ -174,7 +174,13 @@ html,body{
     	.shadow;
 		img{
 			height: 220px;
+			width: initial;
+			.transition(ease 0.3s);
 			border: 1px solid @bd_gray;
+			&.onloading{
+				height: 0;
+				width: 0;
+			}
 		}
 		.img-info{
 			padding: 2px 5px;

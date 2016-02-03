@@ -44,6 +44,10 @@ define('app', function(require, exports, module) {
 				files:files
 			});
 			this.$el.find('.p_right').html(html);
+			// 添加图片的效果
+			$("img.onloading").load(function() {
+				$(this).removeClass('onloading');
+			});
 			// 当前位置
 			var position = path.replace("images/" ,"");
 			this.$el.find(".p_header .crumbs>span").html(position.replace("/"," / "));

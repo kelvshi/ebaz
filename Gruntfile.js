@@ -11,11 +11,23 @@ module.exports = function(grunt) {
 		},
 		concat: {//文件合并
 		    css: {
-		      	src: ['vendors/normalize.css/normalize.css', 'vendors/iconfont/iconfont.css', 'src/css/*.css'],
+		      	src: ['vendors/normalize.css/normalize.css',
+		      			'vendors/iconfont/iconfont.css',
+		      			'vendors/jquery.blueimp-gallery/css/blueimp-gallery.css',
+		      			'vendors/jquery.blueimp-gallery/css/blueimp-gallery-indicator.css',
+		      			'vendors/jquery.blueimp-gallery/css/blueimp-gallery-video.css',
+		      			'src/css/*.css'
+		      		],
 		      	dest: 'dist/css/style.css'
 		    },
 		    lib: {
-		    	src: ['vendors/jquery/*.js',"vendors/underscore/*.js","vendors/backbone/*.js","vendors/seajs/*.js"],
+		    	src: ['vendors/jquery/*.js',
+		    		"vendors/underscore/*.js",
+		    		"vendors/backbone/*.js",
+		    		"vendors/seajs/*.js",
+		    		"vendors/jquery.lazyload/jquery.lazyload.js",
+		    		"vendors/jquery.blueimp-gallery/js/jquery.blueimp-gallery.min.js"
+		    	],
 		      	dest: 'dist/js/lib.js'
 		    },
 		    app: {

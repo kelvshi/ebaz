@@ -44,7 +44,9 @@
     <script type="text/template" id="tpl_img">
     <% _.each(files, function(value){ %>
     <div class="img-box">
-        <img src="<%= path + '/' + value %>">
+        <a href="<%= path + '/' + value %>" title="value" data-gallery>
+            <img class="onloading" src="<%= path + '/' + value %>">
+        </a>
         <div class="img-info"><%= value %></div>
     </div>
     <% }) %>
@@ -92,6 +94,18 @@
     <div class="p_right">
     </div>
     <!-- 右侧内容 -->
+
+    <!-- 图片墙模板 -->
+    <div id="blueimp-gallery" class="blueimp-gallery">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
+    <!-- 图片墙模板 -->
     <script type="text/javascript">
         seajs.use("app");
     </script>

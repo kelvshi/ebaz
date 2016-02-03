@@ -195,7 +195,16 @@ body {
 }
 .p_right .img-box img {
   height: 220px;
+  width: initial;
+  -webkit-transition: ease 0.3s;
+  -moz-transition: ease 0.3s;
+  -ms-transition: ease 0.3s;
+  transition: ease 0.3s;
   border: 1px solid #e7e7e7;
+}
+.p_right .img-box img.onloading {
+  height: 0;
+  width: 0;
 }
 .p_right .img-box .img-info {
   padding: 2px 5px;
