@@ -369,9 +369,10 @@ define('app', function(require, exports, module) {
 		// 滚动到被选中的img
 		scollActive:function () {
 			var activeDom = $(".img-box.active");
-			var posiTop = activeDom.position().top;
+			var posiTop = activeDom.offset().top;
+			var curTop = $(".p_right").scrollTop();
 			$(".p_right").animate({
-				scrollTop:posiTop
+				scrollTop:posiTop + curTop - 40
 			}, 400);
 		},
 		// 重置一些状态
