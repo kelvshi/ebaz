@@ -23,6 +23,44 @@ define('app', function(require, exports, module) {
 					}
 				}
 			},
+			"click .p_totals>span":function (e) {
+				var dom = $(e.currentTarget);
+				dom.siblings('span').removeClass('active');
+				dom.addClass('active');
+				var title = $.trim(dom.html());
+				$(".img-box").each(function(index, el) {
+					var this_a = $(this).find("a");
+					if(this_a.attr("title") == title){
+						$(".img-box").removeClass('active');
+						$(this).addClass('active');
+						return false;
+					}
+				});
+				this.scollActive();
+				$(".p_header .totals").trigger('click');
+			},
+			"click .p_menu_btn":function (e) {
+				var dom = $(e.currentTarget);
+				if(dom.hasClass('active')){
+					this.menuOff();
+				}else{
+					this.menuOn();
+				}
+			}
+		},
+		menuOff:function () {
+			$(".p_menu_btn").removeClass('active');
+			$(".p_left").removeClass('active');
+			$(".p_header").removeClass('active');
+			$(".p_right").removeClass('active');
+			$(".p_totals").removeClass('menu-active');
+		},
+		menuOn:function () {
+			$(".p_menu_btn").addClass('active');
+			$(".p_left").addClass('active');
+			$(".p_header").addClass('active');
+			$(".p_right").addClass('active');
+			$(".p_totals").addClass('menu-active');
 		},
 		filterOff:function () {
 			$(".p_totals").slideUp("fast",function () {
@@ -37,7 +75,11 @@ define('app', function(require, exports, module) {
 		randerRight:function () {
 			var data = this.menu.getActiveLi();
 			var path = data.path;
-			var files = data.files.split(",");
+			var files = data.files;
+			if(!path || !files){
+				return false;
+			}
+			files = files.split(",");
 			var tpl = $("#tpl_img").html();
 			var html = _.template(tpl)({
 				path:path,
@@ -72,6 +114,14 @@ define('app', function(require, exports, module) {
 			// 总数
 			$(".p_header .totals .js-totals").html(files.length);
 		},
+		// 滚动到被选中的img
+		scollActive:function () {
+			var activeDom = $(".img-box.active");
+			var posiTop = activeDom.position().top;
+			$(".p_right").animate({
+				scrollTop:posiTop
+			}, 400);
+		},
 		// 重置一些状态
 		resetPage:function () {
 			this.$el.find('.p_header .totals').removeClass("active");
@@ -80,6 +130,19 @@ define('app', function(require, exports, module) {
 
 		initialize:function(options, param){
 			this.menu = new Menu();
+			// 定义几个niceScroll
+			$(".p_left").niceScroll({
+		        cursorcolor:"rgba(122,122,122,0.6)",
+		        cursorborder: "0",
+		    });
+		    $(".p_right").niceScroll({
+		        cursorcolor:"rgba(122,122,122,0.6)",
+		        cursorborder: "0",
+		    });
+		    $(".p_totals").niceScroll({
+		        cursorcolor:"rgba(122,122,122,0.6)",
+		        cursorborder: "0",
+		    });
 		}
 	});
 

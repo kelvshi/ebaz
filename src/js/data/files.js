@@ -32,10 +32,10 @@ define('data/files', function(require, exports, module) {
                     "path": "images/3D/XYZ",
                     "pid": 1,
                     "covers": [
-                        "test3.png",
                         "test3.txt",
                         "test4.jpg",
-                        "test5.jpg"
+                        "test5.jpg",
+                        "这是阿迪斯AADD但是的撒大大.png"
                     ]
                 }
             ]

@@ -9,7 +9,8 @@ html,body{
 .p_header{
 	position: absolute;
 	top: 0;
-	left: 180px;
+	left: 23px;
+	.transition(left ease 0.5s);
 	right: 0;
 	height: 35px;
 	background: #fff;
@@ -19,6 +20,10 @@ html,body{
 	font-size: 14px;
 	color: #666;
 	padding: 0 10px;
+	&.active{
+		left: 180px;
+		.transition(left ease 0.5s);
+	}
 	.shadow;
 	.iconfont{
 		font-size: 16px;
@@ -51,22 +56,14 @@ html,body{
 .p_left{
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: -180px;
 	bottom: 0;
 	width: 180px;
 	background: @g_blue;
+	.transition(left ease 0.5s);
 	.sidemenu{
 		width: 180px;
-		top: 0;
-		left: -172px;
-		.transition(left ease 0.5s);
-		bottom: 0;
 		background: @g_blue;
-		overflow: hidden;
-		&.active{
-			left: 0;
-			.transition(left ease 0.3s);
-		}
 		.top{
 			height: 120px;
 			text-align: center;
@@ -114,12 +111,39 @@ html,body{
 			text-align: center;
 		}
 	}
+	&.active{
+		left: 0;
+		.transition(left ease 0.5s);
+	}
 }
-
+/*=============菜单开关===========*/
+.p_menu_btn{
+	position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    font-size: 19px;
+    color: #fff;
+    background: #3871D0;
+    padding: 2px 5px 5px 5px;
+    cursor: pointer;
+    .transition(left ease 0.5s);
+    .shadow;
+    &:hover{
+    	background: #2D5AA7;
+    	.transition(background 0.3s);
+    }
+    &.active{
+    	box-shadow: initial;
+    	left: 151px;
+    	.transition(left ease 0.5s);
+    }
+}
 /*============右侧总计===========*/
 .p_totals{
 	position: absolute;
-	left: 180px;
+	left: 0;
+	.transition(left 0.5s);
 	top: 35px;
 	right: 0px;
 	box-sizing: border-box;
@@ -145,7 +169,7 @@ html,body{
 	    color: #2553A0;
 	    cursor: pointer;
 	    .transition(ease 0.3s);
-	    &:hover{
+	    &:hover,&.active{
 	    	max-width: initial;
 	    	color: #fff;
 	    	background: @g_blue;
@@ -156,16 +180,25 @@ html,body{
 	&.active{
 		display: block;
 	}
+	&.menu-active{
+		.transition(left 0.5s);
+		left: 180px;
+	}
 }
 
 /*============右侧详情页============*/
 .p_right{
 	position: absolute;
-	left: 180px;
+	left: 0;
+	.transition(left 0.5s);
 	top: 35px;
 	right: 0;
 	bottom: 0;
 	overflow: auto;
+	&.active{
+		left: 180px;
+		.transition(left 0.5s);
+	}
 	.img-box{
 		float: left;
 		border: 1px solid #e7e7e7;
@@ -192,5 +225,69 @@ html,body{
 		    text-overflow: ellipsis;
 		    box-sizing: border-box;
 		}
+		&.active{
+			overflow: hidden;
+			.animation(shineBlue 5s infinite);
+			img{
+				.animation(bigger 3s linear infinite alternate)
+			}
+		}
 	}
 }
+
+
+// css3 动画
+.biggercommon(){
+	0%{
+		.pre(transform, scale(1))
+	}
+	50%{
+		.pre(transform, scale(1.1))
+	}
+	100%{
+		.pre(transform, scale(1))
+	}
+}
+.keyframes(@name){
+	@-webkit-keyframes @name{
+		 .biggercommon()
+	}
+	@-moz-keyframes @name{
+		 .biggercommon()
+	}
+	@-ms-keyframes @name{
+		 .biggercommon()
+	}
+	@keyframes @name{
+		 .biggercommon()
+	}
+}
+
+.shinecommon(){
+	0%{
+		box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+	}
+	50%{
+		box-shadow: 0px 0px 18px rgba(2,13,247,1);
+	}
+	100%{
+		box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+	}
+}
+.shinekeyframes(@name){
+	@-webkit-keyframes @name{
+		 .shinecommon()
+	}
+	@-moz-keyframes @name{
+		 .shinecommon()
+	}
+	@-ms-keyframes @name{
+		 .shinecommon()
+	}
+	@keyframes @name{
+		 .shinecommon()
+	}
+}
+
+.keyframes(bigger);
+.shinekeyframes(shineBlue);
