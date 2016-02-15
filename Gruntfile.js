@@ -42,11 +42,35 @@ module.exports = function(grunt) {
 				ext: '.js'
 		    }
 		},
+		cssmin: {
+		  	target: {
+		    	files: [{
+		      		expand: true,
+		      		cwd: 'dist/css',
+		      		src: ['*.css', '!*.min.css'],
+		      		dest: 'assets/css',
+		      		ext: '.css'
+		    	}]
+		  	}
+		},
 		uglify: {
-			build: {
-				src: 'dist/built.js', //压缩源文件是之前合并的buildt.js文件
-				dest: 'dist/built.min.js' //压缩文件为built.min.js
-			}
+		 	release: {
+		      	files: [{
+		          	expand: true,
+		          	cwd: 'dist/js',
+		          	src: '*.js',
+		          	dest: 'assets/js',
+		      		ext: '.js'
+		      	}]
+		    }
+		},
+		copy: {
+		  	main: {
+		    	expand: true,
+		    	cwd: 'dist/',
+		    	src: ['**', '!js/**', '!css/**'],
+		    	dest: 'assets/',
+		  	},
 		},
 		watch: {
 			less: {
@@ -77,13 +101,29 @@ module.exports = function(grunt) {
 			// 		debounceDelay: 100
 			// 	}
 			// }
+		},
+		menu: {
+			options:{
+				searchRoot:"dist/images",
+				urlBath:"images",
+				menuTpl:"src/js/data/files.tpl",
+				menuJs:"src/js/data/files.js"
+			},
+			build: {
+				src:"src/js/data/files.tpl",
+				dest:"src/js/data/files.js"
+			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-file-menu');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
-	grunt.registerTask('default', ['less', 'concat:css', 'concat:app', 'watch']);
-	grunt.registerTask('lib', ['concat:lib']);
+	grunt.registerTask('default', ['less', 'concat:css', 'menu' , 'concat:app', 'watch']);
+	grunt.registerTask('release', ['less', 'concat:css', 'cssmin', 'menu' , 'concat:lib', 'concat:app', 'uglify', 'copy']);
 };

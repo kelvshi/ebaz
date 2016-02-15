@@ -11,15 +11,15 @@ define('data/files', function(require, exports, module) {
     "children": [
         {
             "id": 1,
-            "name": "3D",
-            "path": "images/3D",
+            "name": "3DXS",
+            "path": "images/3DXS",
             "pid": 0,
             "covers": [],
             "children": [
                 {
                     "id": 2,
                     "name": "ABC",
-                    "path": "images/3D/ABC",
+                    "path": "images/3DXS/ABC",
                     "pid": 1,
                     "covers": [
                         "test1.txt",
@@ -29,7 +29,7 @@ define('data/files', function(require, exports, module) {
                 {
                     "id": 3,
                     "name": "XYZ",
-                    "path": "images/3D/XYZ",
+                    "path": "images/3DXS/XYZ",
                     "pid": 1,
                     "covers": [
                         "test3.txt",
