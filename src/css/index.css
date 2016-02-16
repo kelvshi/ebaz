@@ -285,16 +285,16 @@ body {
 }
 .p_right .water-fall .img-box.active {
   overflow: hidden;
-  -webkit-animation: shineBlue 5s infinite;
-  -moz-animation: shineBlue 5s infinite;
-  -ms-animation: shineBlue 5s infinite;
-  animation: shineBlue 5s infinite;
+  -webkit-animation: small 3s linear infinite alternate;
+  -moz-animation: small 3s linear infinite alternate;
+  -ms-animation: small 3s linear infinite alternate;
+  animation: small 3s linear infinite alternate;
 }
-.p_right .water-fall .img-box.active img {
-  -webkit-animation: bigger 3s linear infinite alternate;
-  -moz-animation: bigger 3s linear infinite alternate;
-  -ms-animation: bigger 3s linear infinite alternate;
-  animation: bigger 3s linear infinite alternate;
+.p_right .water-fall .img-box.active .img-info {
+  -webkit-animation: textShineBlue 5s infinite;
+  -moz-animation: textShineBlue 5s infinite;
+  -ms-animation: textShineBlue 5s infinite;
+  animation: textShineBlue 5s infinite;
 }
 @-webkit-keyframes bigger {
   0% {
@@ -376,6 +376,98 @@ body {
     transform: scale(1);
   }
 }
+@-webkit-keyframes small {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0px 0px 18px #020df7;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+  }
+}
+@-moz-keyframes small {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0px 0px 18px #020df7;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+  }
+}
+@-ms-keyframes small {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0px 0px 18px #020df7;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+  }
+}
+@keyframes small {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0px 0px 18px #020df7;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+  }
+}
 @-webkit-keyframes shineBlue {
   0% {
     box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
@@ -418,5 +510,61 @@ body {
   }
   100% {
     box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+  }
+}
+@-webkit-keyframes textShineBlue {
+  0% {
+    text-shadow: 0 0 3px #999;
+    color: #999;
+  }
+  50% {
+    text-shadow: 0 0 3px #4285F4;
+    color: #4285F4;
+  }
+  100% {
+    text-shadow: 0 0 3px #999;
+    color: #999;
+  }
+}
+@-moz-keyframes textShineBlue {
+  0% {
+    text-shadow: 0 0 3px #999;
+    color: #999;
+  }
+  50% {
+    text-shadow: 0 0 3px #4285F4;
+    color: #4285F4;
+  }
+  100% {
+    text-shadow: 0 0 3px #999;
+    color: #999;
+  }
+}
+@-ms-keyframes textShineBlue {
+  0% {
+    text-shadow: 0 0 3px #999;
+    color: #999;
+  }
+  50% {
+    text-shadow: 0 0 3px #4285F4;
+    color: #4285F4;
+  }
+  100% {
+    text-shadow: 0 0 3px #999;
+    color: #999;
+  }
+}
+@keyframes textShineBlue {
+  0% {
+    text-shadow: 0 0 3px #999;
+    color: #999;
+  }
+  50% {
+    text-shadow: 0 0 3px #4285F4;
+    color: #4285F4;
+  }
+  100% {
+    text-shadow: 0 0 3px #999;
+    color: #999;
   }
 }
