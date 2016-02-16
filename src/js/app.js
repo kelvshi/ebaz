@@ -6,6 +6,44 @@ define('app', function(require, exports, module) {
 	var undf;
 	var app = {};
 	var Menu = require("widget/menu");
+	// var Water = require("widget/waterfall");
+
+	var Model = Backbone.Model.extend({
+		defaults:{
+			boxWidth: undf, //右侧的宽度
+			boxHeight: undf, //右侧的高度
+			imgs: undf,
+			total:undf, //总数
+			lastIndex: undf, //可视区域内最后一张
+			cols: undf, //列数
+			colWidth:undf, //每一列的宽度
+		},
+		calcCols:function () {
+			var width = this.get("boxWidth");
+			var cols = Math.floor(width / 250);
+			if(cols == 0){
+				cols = 1;
+			}
+			this.set("cols", cols);
+		},
+		calColWidth:function () {
+			var width = this.get("boxWidth");
+			var cols = this.get("cols");
+			var colWidth = Math.floor(100 / cols);
+			this.set("colWidth", colWidth);
+		},
+		calColTotal:function () {
+			var total = this.get("imgs");
+			this.set("total", total.length);
+		},
+		initialize:function(){
+			this.on("change:boxWidth", this.calcCols);
+			this.on("change:cols", this.calColWidth);
+			this.on("change:imgs", this.calColTotal);
+		}
+	});
+
+
 	var MainView = Backbone.View.extend({
 		el:document.body,
 		events:{
@@ -72,36 +110,70 @@ define('app', function(require, exports, module) {
 				$(this).addClass('active');
 			})
 		},
+		minHeightCol:function () {
+			var mindom = $(".water-fall:eq(0)");
+			var min = mindom.height();
+			$(".water-fall").each(function(index, el) {
+				var dom = $(this);
+				var heig = dom.height();
+				if(heig < min){
+					min = heig;
+					mindom = dom;
+				}
+			});
+			return mindom;
+		},
+		appendImg:function (path) {
+			var self = this;
+			var last = this.model.get("lastIndex");
+			var cols = this.model.get("cols");
+			var imgs = this.model.get("imgs");
+			var tpl = $("#tpl_img_simgle").html();
+			for (var i = 0; i < imgs.length; i++) {
+				var img = new Image();
+				img.src = path + "/" + imgs[i];
+				img.title = imgs[i];
+				img.onload = function () {
+					var minDom = self.minHeightCol();
+					var name = this.src;
+					var title = this.title;
+					var imgBlock = _.template(tpl)({
+						path:path,
+						name:title,
+					});
+					minDom.append(imgBlock);
+				}
+			}
+		},
+		calBoxWidth:function () {
+			var boxWidth = this.$el.find(".p_right").width();
+			this.model.set("boxWidth", boxWidth);
+			var boxHeight = this.$el.find(".p_right").height();
+			this.model.set("boxHeight", boxHeight);
+		},
 		randerRight:function () {
+			// 根据列数生成容器
+			var cols = this.model.get("cols");
+			var colWidth = this.model.get("colWidth");
+			var colsHtml = "";
+			var colsItem = '<div class="water-fall" style="width:'+ colWidth +'%"></div>';
+			for (var i = 0; i < cols; i++) {
+				colsHtml += colsItem;
+			}
+			this.$el.find('.p_right').html(colsHtml);
+
 			var data = this.menu.getActiveLi();
 			var path = data.path;
 			var files = data.files;
 			if(!path || !files){
 				return false;
 			}
+			// 设置model
 			files = files.split(",");
-			var tpl = $("#tpl_img").html();
-			var html = _.template(tpl)({
-				path:path,
-				files:files
-			});
-			this.$el.find('.p_right').html(html);
-			$('img.lazy').lazyload({
-			    threshold: 100,
-			    event: "scroll",
-			    effect: "fadeIn",
-			    container: ".p_right",
-			    placeholder: "img/loading2.gif"
-			});
-			// 添加图片的效果
-			$("img").load(function() {
-				// 调整描述文字大小
-				var infor = $(this).parent("a").siblings('.img-info');
-				var imgWidth = $(this).width();
-				if(infor.width() > imgWidth){
-					infor.width(imgWidth-10);
-				}
-			});
+			this.model.set("imgs", files);
+			this.model.set("lastIndex", 0);
+			this.appendImg(path);
+
 			// 当前位置
 			var position = path.replace("images/" ,"");
 			this.$el.find(".p_header .crumbs>span").html(position.replace("/"," / "));
@@ -130,7 +202,14 @@ define('app', function(require, exports, module) {
 		},
 
 		initialize:function(options, param){
+			var view = this;
 			this.menu = new Menu();
+			this.model = new Model();
+			// 计算容器的宽度
+			view.calBoxWidth();
+			// 监听容器宽度变化
+			this.model.on("change:boxWidth", view.randerRight, view);
+
 			// 定义几个niceScroll
 			$(".p_left").niceScroll({
 		        cursorcolor:"rgba(122,122,122,0.6)",

@@ -199,37 +199,45 @@ html,body{
 		left: 180px;
 		.transition(left 0.5s);
 	}
-	.img-box{
+	.water-fall{
 		float: left;
-		border: 1px solid #e7e7e7;
-    	margin: 10px 0 0 10px;
-    	padding: 5px;
-    	background: #fff;
-    	.shadow;
-		img{
-			height: 212px;
-			width: initial;
-			.transition(ease 0.3s);
-			border: 1px solid @bd_gray;
-			&.onloading{
-				height: 0;
-				width: 0;
-			}
-		}
-		.img-info{
-			padding: 2px 5px;
-		    font-size: 16px;
-		    color: #999;
-		    white-space: nowrap;
-		    overflow: hidden;
-		    text-overflow: ellipsis;
-		    box-sizing: border-box;
-		}
-		&.active{
-			overflow: hidden;
-			.animation(shineBlue 5s infinite);
+		overflow: hidden;
+		box-sizing: border-box;
+		padding: 5px;
+		.img-box{
+			float: left;
+			border: 1px solid #e7e7e7;
+	    	padding: 5px;
+	    	background: #fff;
+	    	margin-bottom: 5px;
+	    	width: 100%;
+	    	box-sizing: border-box;
+	    	.shadow;
 			img{
-				.animation(bigger 3s linear infinite alternate)
+				box-sizing: border-box;
+				width: 100%;
+				.transition(ease 0.3s);
+				border: 1px solid @bd_gray;
+				&.onloading{
+					height: 0;
+					width: 0;
+				}
+			}
+			.img-info{
+				padding: 2px 5px;
+			    font-size: 16px;
+			    color: #999;
+			    // white-space: nowrap;
+			    // overflow: hidden;
+			    // text-overflow: ellipsis;
+			    box-sizing: border-box;
+			}
+			&.active{
+				overflow: hidden;
+				.animation(shineBlue 5s infinite);
+				img{
+					.animation(bigger 3s linear infinite alternate)
+				}
 			}
 		}
 	}

@@ -32,10 +32,24 @@ define('data/files', function(require, exports, module) {
                     "path": "images/3DXS/XYZ",
                     "pid": 1,
                     "covers": [
-                        "test3.txt",
+                        "test4 - 副本 (2).jpg",
+                        "test4 - 副本.jpg",
                         "test4.jpg",
+                        "test411这是埃杜阿多阿斯顿撒 - 副本 (2).jpg",
+                        "test411这是埃杜阿多阿斯顿撒 - 副本.jpg",
+                        "test411这是埃杜阿多阿斯顿撒.jpg",
+                        "test5 - 副本 (2).jpg",
+                        "test5 - 副本.jpg",
                         "test5.jpg",
-                        "这是阿迪斯AADD但是的撒大大.png"
+                        "test6 - 副本 (2).jpg",
+                        "test6 - 副本.jpg",
+                        "test6.jpg",
+                        "这是阿迪斯AADD但是的撒大大 - 副本 (2).png",
+                        "这是阿迪斯AADD但是的撒大大 - 副本.png",
+                        "这是阿迪斯AADD但是的撒大大.png",
+                        "阿达阿达萨达aa - 副本 (2).jpg",
+                        "阿达阿达萨达aa - 副本.jpg",
+                        "阿达阿达萨达aa.jpg"
                     ]
                 }
             ]

@@ -1267,44 +1267,49 @@ body {
   -ms-transition: left 0.5s;
   transition: left 0.5s;
 }
-.p_right .img-box {
+.p_right .water-fall {
+  float: left;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 5px;
+}
+.p_right .water-fall .img-box {
   float: left;
   border: 1px solid #e7e7e7;
-  margin: 10px 0 0 10px;
   padding: 5px;
   background: #fff;
+  margin-bottom: 5px;
+  width: 100%;
+  box-sizing: border-box;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
 }
-.p_right .img-box img {
-  height: 212px;
-  width: initial;
+.p_right .water-fall .img-box img {
+  box-sizing: border-box;
+  width: 100%;
   -webkit-transition: ease 0.3s;
   -moz-transition: ease 0.3s;
   -ms-transition: ease 0.3s;
   transition: ease 0.3s;
   border: 1px solid #e7e7e7;
 }
-.p_right .img-box img.onloading {
+.p_right .water-fall .img-box img.onloading {
   height: 0;
   width: 0;
 }
-.p_right .img-box .img-info {
+.p_right .water-fall .img-box .img-info {
   padding: 2px 5px;
   font-size: 16px;
   color: #999;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   box-sizing: border-box;
 }
-.p_right .img-box.active {
+.p_right .water-fall .img-box.active {
   overflow: hidden;
   -webkit-animation: shineBlue 5s infinite;
   -moz-animation: shineBlue 5s infinite;
   -ms-animation: shineBlue 5s infinite;
   animation: shineBlue 5s infinite;
 }
-.p_right .img-box.active img {
+.p_right .water-fall .img-box.active img {
   -webkit-animation: bigger 3s linear infinite alternate;
   -moz-animation: bigger 3s linear infinite alternate;
   -ms-animation: bigger 3s linear infinite alternate;
