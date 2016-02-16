@@ -14,6 +14,7 @@ module.exports = function(grunt) {
 		      	src: ['vendors/normalize.css/normalize.css',
 		      			'vendors/iconfont/iconfont.css',
 		      			'vendors/jquery.blueimp-gallery/css/blueimp-gallery.css',
+		      			'vendors/jquery.blueimp-gallery/css/blueimp-gallery-indicator.css',
 		      			'src/css/*.css'
 		      		],
 		      	dest: 'dist/css/style.css'
@@ -25,13 +26,14 @@ module.exports = function(grunt) {
 		    		"vendors/seajs/*.js",
 		    		"vendors/jquery.lazyload/jquery.lazyload.js",
 		    		"vendors/jquery.blueimp-gallery/js/blueimp-gallery.js",
+		    		"vendors/jquery.blueimp-gallery/js/blueimp-gallery-indicator.js",
 		    		"vendors/jquery.blueimp-gallery/js/jquery.blueimp-gallery.js",
 		    		"vendors/jquery.nicescroll/jquery.nicescroll.js",
 		    	],
 		      	dest: 'dist/js/lib.js'
 		    },
 		    app: {
-		    	src: ['src/js/data/files.js','src/js/widget/menu.js','src/js/app.js'],
+		    	src: ['src/js/data/files.js', 'src/js/widget/menu.js', 'src/js/widget/waterfall.js', 'src/js/app.js'],
 		      	dest: 'dist/js/app.js'
 		    },
 		    js: {
